@@ -1,0 +1,19 @@
+{
+  "name": "mistralbot-flarum",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local --port 8787",
+    "dev-with-forum": "npm run forum:up && npm run dev",
+    "forum:up": "docker compose -f .devcontainer/docker-compose.yml up -d mysql flarum",
+    "forum:down": "docker compose -f .devcontainer/docker-compose.yml down",
+    "deploy": "wrangler deploy",
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240909.0",
+    "typescript": "^5.6.2",
+    "wrangler": "^3.114.0"
+  }
+}
